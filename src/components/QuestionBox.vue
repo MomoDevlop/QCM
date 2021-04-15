@@ -4,7 +4,7 @@
       <template slot="lead">
         {{ currentQuestion.question }}
       </template>
-      <hr class="my-4"/>
+      <hr class="my-4" />
       <b-list-group>
         <b-list-group-item
           v-for="(answer, index) in answers"
@@ -16,7 +16,12 @@
         </b-list-group-item>
       </b-list-group>
       <hr class="my-4" />
-      <b-button variant="primary" @click="submitAnswer" :disabled="choixAnswer.length === 0 || answered" >Submit</b-button>
+      <b-button
+        variant="primary"
+        @click="submitAnswer"
+        :disabled="this.choixAnswer.length === 0 || this.answered"
+        >Submit</b-button
+      >
       <b-button @click="next" variant="success">Next</b-button>
     </b-jumbotron>
   </div>
@@ -33,15 +38,25 @@ export default {
   },
   data() {
     return {
+      // Tu avais oublié de mettre le #answered dans le data , ce qui ne declenchait pas la reactivité de Vujs 
+      answered: false, 
+      // 
+
       selectedAnswers: [],
       shuffledAnswers: [],
       choixAnswer: [],
     };
   },
   watch: {
+    // Le watch te permet ici de renitialiser les valeur a chaque changement de la question c-a-d quand on clique sur le next
     currentQuestion: {
       immediate: true,
       handler() {
+      //   Les valeurs que j'ai achoute sont encadre
+      this.selectedAnswers = []
+      this.shuffledAnswers = [],
+      this.choixAnswer = [],
+      //
         this.answered = false;
         this.shuffleAnswers();
       },
@@ -80,6 +95,7 @@ export default {
 
     submitAnswer() {
     let isCorrect= false
+    this.answered = true;
     let cmp = 0
     if (this.choixAnswer.length == this.shuffledAnswers.length)
     {
@@ -94,15 +110,16 @@ export default {
         isCorrect = false
       }else
         isCorrect= true
-
-        this.answered = true;
         this.increment(isCorrect);
-        this.shuffledAnswers.splice(this.shuffledAnswers);
-        this.choixAnswer.splice(this.choixAnswer);
+
+         // Ces valeurs sont facultatives je penses ?? Si tu veut 
+         // Voici un lien pour comprendre le splice() https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_splice1
+        //console.log(this.shuffledAnswers.splice(this.shuffledAnswers))
+        //this.choixAnswer.splice(this.choixAnswer);
 
     }else 
       this.increment(isCorrect)
-      this.choixAnswer.splice(this.choixAnswer);
+      //this.choixAnswer.splice(this.choixAnswer);
   },
 
   answerClass(index) {//gestions des choix
