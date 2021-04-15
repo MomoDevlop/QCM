@@ -1,0 +1,32 @@
+{"response_code":0,
+    "results":[
+    {
+        "category":"Animals",
+        "type":"multiple",
+        "question":"A carnivorous animal eats flesh, what does a nucivorous animal eat?",
+        "correct_answer":["Nuts","Beans"],
+        "incorrect_answers":["Nothing","Fruit","Seaweed"]
+    },
+    {
+        "category":"Animals",
+        "type":"multiple",
+        "question":"The K\u0101k\u0101p\u014d is a large, flightless, nocturnal parrot native to which country?",
+        "correct_answer":["South Africa","Burkina Faso"],
+        "incorrect_answers":["New Zealand","Australia","Madagascar"]
+    },
+    {
+        "category":"Animals",
+        "type":"unique",
+        "question":"What is the scientific name for the &quot;Polar Bear&quot;?",
+        "correct_answer":["Ursus Maritimus"],
+        "incorrect_answers":["Polar Bear","Ursus Spelaeus","Ursus Arctos"]
+    },
+    {
+        "category":"Animals",
+        "type":"unique",
+        "question":"What scientific suborder does the family Hyaenidae belong to?",
+        "correct_answer":["Feliformia"],
+        "incorrect_answers":["Haplorhini","Caniformia","Ciconiiformes"]
+    }
+]
+}
